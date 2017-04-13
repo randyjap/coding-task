@@ -14,7 +14,7 @@ class Revision < ApplicationRecord
 
   belongs_to :question, inverse_of: :revisions
   before_validation :calculate_version
-  has_many :answers, inverse_of: :revision, inverse_of: :revision
+  has_many :answers, inverse_of: :revision
 
   private
 

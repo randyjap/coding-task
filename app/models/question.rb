@@ -16,10 +16,14 @@ class Question < ApplicationRecord
   belongs_to :approved_revision,
              class_name: "Revision",
              foreign_key: "approved_revision_id",
-             inverse_of: :question
+             optional: true
   has_many :answers, through: :approved_revision
 
   def approved_answers
-    self.approved_revision.answers
+    if self.approved_revision
+      self.approved_revision.answers
+    else
+      []
+    end
   end
 end
